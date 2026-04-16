@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["XXXXXXXXXX.com.canvasshq.app"],
+        "components": [
+          { "/": "/join*", "comment": "Invite deep links" }
+        ]
+      }
+    ]
+  }
+}
