@@ -7,6 +7,7 @@
   <meta name="description" content="Sortie is field organizing software for canvassing campaigns." />
   <meta property="og:title" content="Sortie Field" />
   <meta property="og:description" content="Field organizing software for canvassing campaigns." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" crossorigin="anonymous" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -105,22 +106,25 @@
 
     .store-buttons {
       display: flex;
+      flex-direction: column;
+      align-items: stretch;
       gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
+      width: 100%;
+      max-width: 360px;
     }
 
     .store-btn {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 14px;
-      padding: 14px 22px;
+      justify-content: center;
+      gap: 6px;
+      padding: 22px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
       text-decoration: none;
       color: var(--text);
-      min-width: 230px;
       transition: border-color 0.15s, background 0.15s;
     }
 
@@ -136,9 +140,8 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 11px 14px;
+      padding: 14px 16px;
       gap: 9px;
-      min-width: 230px;
     }
 
     .android-signup-hdr {
@@ -203,17 +206,14 @@
     }
 
     .store-btn i {
-      flex-shrink: 0;
-      font-size: 2rem;
+      font-size: 2.6rem;
       opacity: 0.9;
-      width: 26px;
-      text-align: center;
     }
 
     .store-btn-text {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 3px;
     }
 
@@ -225,20 +225,20 @@
     }
 
     .store-btn-name {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.01em;
     }
 
-    /* Android card header is secondary — keep text smaller than the iOS button */
+    /* Android card header keeps its own sizing */
     .android-signup-hdr i {
       font-size: 1.5rem;
       opacity: 0.85;
-      width: 22px;
-      text-align: center;
+      flex-shrink: 0;
     }
 
+    .android-signup-hdr .store-btn-text { align-items: flex-start; }
     .android-signup-hdr .store-btn-sub  { font-size: 0.6rem; }
     .android-signup-hdr .store-btn-name { font-size: 0.85rem; font-weight: 600; }
 
@@ -268,9 +268,7 @@
     @media (max-width: 480px) {
       header { padding: 18px 20px; }
       footer { padding: 16px 20px; }
-      .store-buttons { flex-direction: column; align-items: center; }
-      .store-btn { width: 260px; }
-      .android-signup { min-width: 260px; }
+      .store-buttons { max-width: 100%; }
     }
   </style>
 </head>
