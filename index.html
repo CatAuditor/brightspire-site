@@ -129,6 +129,21 @@
       background: var(--accent-glow);
     }
 
+    .store-btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .android-note {
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.55;
+      max-width: 180px;
+    }
+
     .store-btn i {
       flex-shrink: 0;
       font-size: 1.4rem;
@@ -205,7 +220,7 @@
       <span class="download-label">Download</span>
       <div class="store-buttons">
 
-        <a class="store-btn" href="#" id="ios-btn">
+        <a class="store-btn" href="https://apps.apple.com/us/app/sortie-field/id6761550519" id="ios-btn" target="_blank" rel="noopener">
           <i class="fa-brands fa-apple"></i>
           <div class="store-btn-text">
             <span class="store-btn-sub">Download on the</span>
@@ -213,13 +228,16 @@
           </div>
         </a>
 
-        <a class="store-btn" href="#" id="android-btn">
-          <i class="fa-brands fa-google-play"></i>
-          <div class="store-btn-text">
-            <span class="store-btn-sub">Get it on</span>
-            <span class="store-btn-name">Google Play</span>
-          </div>
-        </a>
+        <div class="store-btn-wrap">
+          <a class="store-btn" href="mailto:info@brightspiremedia.com" id="android-btn">
+            <i class="fa-brands fa-google-play"></i>
+            <div class="store-btn-text">
+              <span class="store-btn-sub">Have an Android?</span>
+              <span class="store-btn-name">Sign up for access</span>
+            </div>
+          </a>
+          <p class="android-note">Google requires a high number of testers before apps can be published.</p>
+        </div>
 
       </div>
     </div>
