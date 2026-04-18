@@ -150,53 +150,20 @@
       gap: 11px;
     }
 
-    .android-form {
-      display: flex;
-      gap: 6px;
-    }
-
-    .android-form input[type="email"] {
-      flex: 1;
-      min-width: 0;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-size: 0.75rem;
-      padding: 7px 10px;
-      outline: none;
-      font-family: inherit;
-      transition: border-color 0.15s;
-    }
-
-    .android-form input[type="email"]:focus { border-color: var(--accent); }
-    .android-form input[type="email"]::placeholder { color: var(--muted); }
-
-    .android-form button {
+    .android-join-btn {
+      display: block;
+      text-align: center;
       background: var(--accent);
       color: #0d0d0d;
-      border: none;
       border-radius: 6px;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 7px 12px;
-      cursor: pointer;
-      white-space: nowrap;
-      font-family: inherit;
+      padding: 9px 12px;
+      text-decoration: none;
       transition: opacity 0.15s;
     }
 
-    .android-form button:hover   { opacity: 0.85; }
-    .android-form button:disabled { opacity: 0.5; cursor: default; }
-
-    .android-result {
-      font-size: 0.63rem;
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    .android-result.success { color: #6fcf8a; }
-    .android-result.error   { color: #e07070; }
+    .android-join-btn:hover { opacity: 0.85; }
 
     .android-note {
       font-size: 0.58rem;
@@ -301,14 +268,12 @@
             <i class="fa-brands fa-google-play"></i>
             <div class="store-btn-text">
               <span class="store-btn-sub">Have an Android?</span>
-              <span class="store-btn-name">Sign up for access</span>
+              <span class="store-btn-name">Join the Android test</span>
             </div>
           </div>
-          <form class="android-form" onsubmit="submitAndroidSignup(event)">
-            <input type="email" id="android-email" placeholder="your@email.com" autocomplete="email" required />
-            <button type="submit" id="android-submit">Sign up</button>
-          </form>
-          <p id="android-result" class="android-result" hidden></p>
+          <a href="https://groups.google.com/g/sortie-field-testing" target="_blank" rel="noopener" class="android-join-btn">
+            Join via Google Groups
+          </a>
           <p class="android-note">Google requires a high number of testers before apps can be published.</p>
         </div>
 
@@ -323,45 +288,5 @@
   </footer>
 
 
-  <script>
-    async function submitAndroidSignup(e) {
-      e.preventDefault();
-      const email  = document.getElementById('android-email').value.trim();
-      const btn    = document.getElementById('android-submit');
-      const result = document.getElementById('android-result');
-
-      btn.disabled    = true;
-      btn.textContent = '...';
-      result.hidden   = true;
-      result.className = 'android-result';
-
-      try {
-        const res  = await fetch('https://uzuzztvmyvlkegxjbhrs.supabase.co/functions/v1/register-android-tester', {
-          method:  'POST',
-          headers: { 'content-type': 'application/json' },
-          body:    JSON.stringify({ email }),
-        });
-        const data = await res.json();
-
-        if (res.ok) {
-          result.textContent = data.already
-            ? "You're already on the list — Google will send you an invite."
-            : "You're on the list! Check your email for an invite from Google.";
-          result.classList.add('success');
-          e.target.reset();
-          btn.textContent = 'Sign up';
-        } else {
-          throw new Error(data.error);
-        }
-      } catch {
-        result.textContent = 'Something went wrong — try again.';
-        result.classList.add('error');
-        btn.disabled    = false;
-        btn.textContent = 'Sign up';
-      }
-
-      result.hidden = false;
-    }
-  </script>
 </body>
 </html>
